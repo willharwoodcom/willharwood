@@ -4,20 +4,77 @@
       Just rest a while
     </title>
     <style>
-      body, html {
-        height: 100%;
-        margin: 0;
+      #container {position: relative; font-size: 0; width: 100%; height: 100%;}
+      .slide {
+        border: none;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        width: 100%; height: 100%;
+        -webkit-transition: opacity 0.5s linear;
+        -moz-transition: opacity 0.5s linear;
+        -o-transition: opacity 0.5s linear;
+        transition: opacity 0.5s linear;
       }
-
-      .bg {
-        background-image: url("img/bigsur_woods_01.webp");
-        height: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
+      .showMe {opacity: 1;}
   </style></head>
   <body>
-    <div class="bg"></div>
+    <div id="container">
+      <img id="a" class="slide showMe" src="img/f0.jpg">
+      <img id="b" class="slide" src="">
+      </div>
+
+    <script>
+      var page = "a";
+      var next = "b";
+      var total = 11;
+      var i = 0;
+      var start = 0;
+      var type = "f";
+      
+      setTimeout(() => nextImage(), 4000);
+      
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
+      
+      function nextImage() {
+        if (page == "b") {
+          next = "a";
+        } else {
+          next = "b";
+        }
+        var j = getRandomInt(total);
+        while (i == j) {
+          j = getRandomInt(total);
+        }
+        i = j;
+        document.getElementById(next).addEventListener('load', doNext)
+        document.getElementById(next).src = "img/" + type + i + ".jpg";
+      }
+      
+      function doNext() {
+          e = document.getElementById(page);
+          removeClass(e, "showMe");
+          e = document.getElementById(next);
+          addClass(e, "showMe");
+          page = next;
+          setTimeout(() => nextImage(), 6000);
+      }
+      
+      function addClass(elem, name) {
+        var c = elem.className;
+        if (c) c += " ";
+        c += name;
+        elem.className = c;
+      }
+
+      function removeClass(elem, name) {
+        var c = elem.className;
+        elem.className = c.replace(name, "").replace(/   /g, " ").replace(/^ | $/g, "");
+      }
+    </script>
   </body>
 </html>
