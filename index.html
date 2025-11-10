@@ -34,19 +34,21 @@
         transition: opacity 1s ease-in-out;
       }
 
-      .showMe {opacity: 1;}
+      .showMe {
+        opacity: 1;
+      }
   </style></head>
   <body>
     <div id="container">
       <img id="a" class="slide showMe" src="img/b_0.jpg">
       <img id="b" class="slide" src="img/b_1.jpg">
     </div>
-
+  
     <script>      
       var page = "a";
       var next = "b";
       var start = 0;
-      var end = 64;
+      var end = 63;
       var base = "img/b_";
 
       var i = start;
@@ -64,11 +66,11 @@
           document.exitFullscreen();
         }
       }
-x
+
       function getRandomInt(max) {
         return Math.floor(Math.random() * max);
       }
-      
+
       function nextImage() {
         // TODO: switch to portrait images.
         //if (window.innerHeight > window.innerWidth){
