@@ -4,20 +4,21 @@
       Just rest a while
     </title>
     <style>
-      #container {position: relative; font-size: 0; width: 100%; height: 100%;}
+      #container {position: relative; font-size: 0; width: 100%; height: 100%; border: none; background-color: black;}
 
       .slide {
         border: none;
         opacity: 0;
         position: absolute;
+        background-color: black;
         top: 0;
         left: 0;
         object-fit: cover;
         width: 100%; height: 100%;
-        -webkit-transition: opacity 0.5s linear;
-        -moz-transition: opacity 0.5s linear;
-        -o-transition: opacity 0.5s linear;
-        transition: opacity 0.5s linear;
+        -webkit-transition: opacity 1s ease-in-out;
+        -moz-transition: opacity 1s ease-in-out;
+        -o-transition: opacity 1s ease-in-out;
+        transition: opacity 1s ease-in-out;
       }
 
       .showMe {opacity: 1;}
@@ -31,17 +32,18 @@
       Please view in landscape
     </div>
     <div id="container">
-      <img id="a" class="slide showMe" src="img/f8.jpg">
+      <img id="a" class="slide showMe" src="img/b_0.jpg">
       <img id="b" class="slide" src="">
     </div>
 
     <script>      
       var page = "a";
       var next = "b";
-      var total = 11;
-      var i = 8;
       var start = 0;
-      var type = "f";
+      var end = 64;
+      var base = "img/b_";
+
+      var i = start;
       
       setTimeout(() => nextImage(), 4000);
       
@@ -50,23 +52,23 @@
       }
       
       function nextImage() {
-        if (window.innerHeight > window.innerWidth){
-            removeClass(document.getElementById("message"), "messageOff");
-        } else {
-            addClass(document.getElementById("message"), "messageOff");
-        }
+        // TODO: switch to portrait images.
+        //if (window.innerHeight > window.innerWidth){
+        //    removeClass(document.getElementById("message"), "messageOff");
+        //} else {
+        //    addClass(document.getElementById("message"), "messageOff");
+        //}
         if (page == "b") {
           next = "a";
         } else {
           next = "b";
         }
-        var j = getRandomInt(total);
-        while (i == j) {
-          j = getRandomInt(total);
+        i = i + 1;
+        if (i > end) {
+          i = start;
         }
-        i = j;
         document.getElementById(next).addEventListener('load', doNext)
-        document.getElementById(next).src = "img/" + type + i + ".jpg";
+        document.getElementById(next).src = base + i + ".jpg";
       }
       
       function doNext() {
