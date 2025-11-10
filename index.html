@@ -4,7 +4,20 @@
       Just rest a while
     </title>
     <style>
-      #container {position: relative; font-size: 0; width: 100%; height: 100%; border: none; background-color: black;}
+
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      
+      #container {
+        position: relative;
+        font-size: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: black;
+      }
 
       .slide {
         border: none;
@@ -22,18 +35,11 @@
       }
 
       .showMe {opacity: 1;}
-
-      .messageOff {
-        display:none;
-      }
   </style></head>
   <body>
-    <div id="message" class="messageOff">
-      Please view in landscape
-    </div>
     <div id="container">
       <img id="a" class="slide showMe" src="img/b_0.jpg">
-      <img id="b" class="slide" src="">
+      <img id="b" class="slide" src="img/b_1.jpg">
     </div>
 
     <script>      
@@ -44,9 +50,21 @@
       var base = "img/b_";
 
       var i = start;
-      
+
       setTimeout(() => nextImage(), 4000);
-      
+
+      document.addEventListener("keydown", function(e) {
+        toggleFullScreen();
+      }, false);
+
+      function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+x
       function getRandomInt(max) {
         return Math.floor(Math.random() * max);
       }
