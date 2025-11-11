@@ -47,15 +47,17 @@
     <script>      
       var page = "a";
       var next = "b";
-      var start_landscape = 0;
-      var start_portrait = 89;
-      var end_landscape = 63;
-      var end_portrait = 287;
-      var base = "img/b_";
-      var orientation = "";
+      const start_landscape = 0;
+      const start_portrait = 89;
+      const end_landscape = 63;
+      const end_portrait = 287;
+      const base = "img/b_";
+      var orientation2 = "portrait";
       var i = 0;
       reset();
 
+      console.log(">>> at start, orientation is " + orientation2);
+      
       setTimeout(() => nextImage(), 4000);
 
       document.addEventListener("keydown", function(e) {
@@ -77,8 +79,8 @@
       }
 
       function reset() {
-        orientation = getOrientation();
-        if (orientation == "portrait") {
+        orientation2 = getOrientation();
+        if (orientation2 == "portrait") {
           i = start_portrait;
         } else {
           i = start_landscape;
@@ -87,8 +89,10 @@
       
       function getOrientation() {
         if (window.innerHeight > window.innerWidth){
+          console.log(">>> returning portrait");
           return "portrait";
         } else {
+          console.log(">>> returning landscape");
           return "landscape";
         }
       }
@@ -99,12 +103,12 @@
         } else {
           next = "b";
         }
-        if (orientation != getOrientation()) {
-          console.log("orientation != getOrientation " + orientation + ", " + getOrientation());
+        if (orientation2 != getOrientation()) {
+          console.log("orientation != getOrientation " + orientation2 + ", " + getOrientation());
           reset();
         }
         i = i + 1;
-        if (orientation == "portrait") {
+        if (orientation2 == "portrait") {
           if (i > end_portrait) {
             reset();
           }
