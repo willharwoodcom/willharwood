@@ -47,11 +47,14 @@
     <script>      
       var page = "a";
       var next = "b";
-      var start = 0;
-      var end = 63;
+      var start_landscape = 0;
+      var start_portrait = 89;
+      var end_landscape = 63;
+      var end_portrait = 287;
       var base = "img/b_";
-
-      var i = start;
+      var orientation = "";
+      var i = 0;
+      reset();
 
       setTimeout(() => nextImage(), 4000);
 
@@ -67,26 +70,42 @@
         }
       }
 
-      function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
+      function reset() {
+        orientation = getOrientation();
+        if (orientation == "portrait") {
+          i = start_portrait;
+        } else {
+          i = start_landscape;
+        }
       }
-
+      
+      function getOrientation() {
+        if (window.innerHeight > window.innerWidth){
+          return "portrait";
+        } else {
+          return "landscape";
+        }
+      }
+      
       function nextImage() {
-        // TODO: switch to portrait images.
-        //if (window.innerHeight > window.innerWidth){
-        //    removeClass(document.getElementById("message"), "messageOff");
-        //} else {
-        //    addClass(document.getElementById("message"), "messageOff");
-        //}
         if (page == "b") {
           next = "a";
         } else {
           next = "b";
         }
-        i = i + 1;
-        if (i > end) {
-          i = start;
+        if (orientation != getOrientation()) {
+          reset();
         }
+        i = i + 1;
+        if (orientation == "portrait") {
+          if (i > end_portrait) {
+            reset();
+          }
+        } else {
+          if (i > end_landscape) {
+            reset();
+          }
+        }      
         document.getElementById(next).addEventListener('load', doNext)
         document.getElementById(next).src = base + i + ".jpg";
       }
