@@ -100,6 +100,7 @@
           next = "b";
         }
         if (orientation != getOrientation()) {
+          console.log("orientation != getOrientation " + orientation + ", " + getOrientation());
           reset();
         }
         i = i + 1;
@@ -111,7 +112,8 @@
           if (i > end_landscape) {
             reset();
           }
-        }      
+        }
+        console.log(">>>> new i is " + i);
         document.getElementById(next).addEventListener('load', doNext)
         document.getElementById(next).src = base + i + ".jpg";
       }
