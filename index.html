@@ -61,6 +61,12 @@
       document.addEventListener("keydown", function(e) {
         toggleFullScreen();
       }, false);
+      document.addEventListener("touchstart", function(e) {
+        toggleFullScreen();
+      }, false);
+      document.addEventListener("click", function(e) {
+        toggleFullScreen();
+      }, false);
 
       function toggleFullScreen() {
         if (!document.fullscreenElement) {
