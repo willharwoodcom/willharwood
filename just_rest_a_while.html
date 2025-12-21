@@ -1,0 +1,150 @@
+<html>
+  <head>
+    <title>
+      Just rest a while
+    </title>
+    <style>
+
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      
+      #container {
+        position: relative;
+        font-size: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: black;
+      }
+
+      .slide {
+        border: none;
+        opacity: 0;
+        position: absolute;
+        background-color: black;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        width: 100%; height: 100%;
+        -webkit-transition: opacity 1s ease-in-out;
+        -moz-transition: opacity 1s ease-in-out;
+        -o-transition: opacity 1s ease-in-out;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .showMe {
+        opacity: 1;
+      }
+  </style></head>
+  <body>
+    <div id="container">
+      <img id="a" class="slide showMe" src="img/b_0.jpg">
+      <img id="b" class="slide" src="img/b_1.jpg">
+    </div>
+  
+    <script>      
+      var page = "a";
+      var next = "b";
+      const start_landscape = 0;
+      const start_portrait = 89;
+      const end_landscape = 63;
+      const end_portrait = 177;
+      const base = "img/b_";
+      var orientation2 = "portrait";
+      var i = 0;
+      reset();
+
+      console.log(">>> at start, orientation is " + orientation2);
+      
+      setTimeout(() => nextImage(), 4000);
+
+      document.addEventListener("keydown", function(e) {
+        toggleFullScreen();
+      }, false);
+      document.addEventListener("touchstart", function(e) {
+        toggleFullScreen();
+      }, false);
+      document.addEventListener("click", function(e) {
+        toggleFullScreen();
+      }, false);
+
+      function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+
+      function reset() {
+        orientation2 = getOrientation();
+        if (orientation2 == "portrait") {
+          i = start_portrait;
+        } else {
+          i = start_landscape;
+        }
+      }
+      
+      function getOrientation() {
+        if (window.innerHeight > window.innerWidth){
+          console.log(">>> returning portrait");
+          return "portrait";
+        } else {
+          console.log(">>> returning landscape");
+          return "landscape";
+        }
+      }
+      
+      function nextImage() {
+        if (page == "b") {
+          next = "a";
+        } else {
+          next = "b";
+        }
+        if (orientation2 != getOrientation()) {
+          console.log("orientation != getOrientation " + orientation2 + ", " + getOrientation());
+          reset();
+        }
+        i = i + 1;
+        if (orientation2 == "portrait") {
+          if (i > end_portrait) {
+            reset();
+          }
+        } else {
+          if (i > end_landscape) {
+            reset();
+          }
+        }
+        console.log(">>>> new i is " + i);
+        document.getElementById(next).addEventListener('load', doNext)
+        document.getElementById(next).src = base + i + ".jpg";
+      }
+      
+      function doNext() {
+          e = document.getElementById(page);
+          removeClass(e, "showMe");
+          e = document.getElementById(next);
+          addClass(e, "showMe");
+          page = next;
+          setTimeout(() => nextImage(), 6000);
+      }
+      
+      function addClass(elem, name) {
+        var c = elem.className;
+        if (c.includes(name)) {
+          return;
+        }
+        if (c) c += " ";
+        c += name;
+        elem.className = c;
+      }
+
+      function removeClass(elem, name) {
+        var c = elem.className;
+        elem.className = c.replace(name, "").replace(/   /g, " ").replace(/^ | $/g, "");
+      }
+    </script>
+  </body>
+</html>
