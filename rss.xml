@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+  <channel>
+    <title>willharwood.com RSS feed</title>
+    <link>https://willharwood.com</link>
+    <description>RSS feed for willharwood.com</description>
+
+    <item>
+      <title>Just rest a while as we walk through Tilden Woods</title>
+      <link>https://willharwood.com/just_rest_a_while.html</link>
+      <description>Slow photographs of a walk through Tilden Woods in November, taken with a Leica Q2</description>
+    </item>
+
+    <item>
+      <title>A walk at Emeryville Marina, December 2025</title>
+      <link>https://willharwood.com/emeryville_marina_dec_2025.html</link>
+      <description>Some pictures from Emeryville Marina, taken on a Fuji X100F with Acros film simulation</description>
+    </item>
+
+    <item>
+      <title>Missy Sleeps</title>
+      <link>https://willharwood.com/MissySleeps/</link>
+      <description>Missy Sleeps, a little book of drawings</description>
+    </item>
+
+  </channel>
+</rss>
