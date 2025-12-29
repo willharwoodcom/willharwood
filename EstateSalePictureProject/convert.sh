@@ -1,15 +1,11 @@
 #!/bin/bash
 
 # Small and large images
-rm *_l.jpg *_n.jpg
+rm *.jpg
 
-ls raw | sed 's/.*/convert "raw\/&" -resize 350x350 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_n.jpg &"/' | sed 's/.jpg_n/_n/' | sh
+ls raw | sed 's/.*/convert "raw\/&" -resize 350x350 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_n.jpg"/' | sed 's/.jpg_n/_n/' | sh
 
-wait
-
-ls raw | sed 's/.*/convert "raw\/&" -resize 900x900 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_l.jpg &"/' | sed 's/.jpg_l/_l/' | sh
-
-wait
+ls raw | sed 's/.*/convert "raw\/&" -resize 900x900 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_l.jpg"/' | sed 's/.jpg_l/_l/' | sh
 
 # Simple pages, 1.html to n.html
 total=0
