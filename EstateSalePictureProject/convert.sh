@@ -1,7 +1,6 @@
 #!/bin/bash
 
 if [ "$1" == "all" ]; then
-
   # Small and large images
   rm *.jpg
 
@@ -22,10 +21,11 @@ done
 echo "$total images"
 
 n=0
+prev=total
 for file in *_l.jpg; do
-    p=$(expr "$n" + 1)
-if [ "$p" == "$total" ]; then
-    p=0
+    next=$(expr "$n" + 1)
+if [ "$next" == "$total" ]; then
+    next=0
 fi
     cat <<EOF > $n.html
 <html>
@@ -42,12 +42,14 @@ fi
   </head>
   <body>
     <center>
-      <a href="$p.html"><img src="$file"/></a>
-      <br><a href="index.html">Back to index</a>
+      <a href="$next.html"><img src="$file"/></a>
+      <br><a href="$prev.html">Previous</a> ~ <a href="index.html">Index</a> ~ <a href="next.html">Next</a>
     </center>
   </body>
 </html>
 EOF
+
+prev=n
 n=$(expr "$n" + 1)
 done
 
