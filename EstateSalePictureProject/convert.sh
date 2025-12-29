@@ -21,7 +21,7 @@ done
 echo "$total images"
 
 n=0
-prev=total
+prev=$total
 for file in *_l.jpg; do
     next=$(expr "$n" + 1)
 if [ "$next" == "$total" ]; then
@@ -49,7 +49,7 @@ fi
 </html>
 EOF
 
-prev=n
+prev=$n
 n=$(expr "$n" + 1)
 done
 
