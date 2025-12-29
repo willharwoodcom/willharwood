@@ -1,11 +1,18 @@
 #!/bin/bash
 
-# Small and large images
-rm *.jpg
+if [ "$1" == "all" ]; then
 
-ls raw | sed 's/.*/convert "raw\/&" -resize 350x350 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_n.jpg"/' | sed 's/.jpg_n/_n/' | sh
+  # Small and large images
+  rm *.jpg
 
-ls raw | sed 's/.*/convert "raw\/&" -resize 900x900 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_l.jpg"/' | sed 's/.jpg_l/_l/' | sh
+  ls raw | sed 's/.*/convert "raw\/&" -resize 350x350 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_n.jpg"/' | sed 's/.jpg_n/_n/' | sh
+
+  ls raw | sed 's/.*/convert "raw\/&" -resize 900x900 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_l.jpg"/' | sed 's/.jpg_l/_l/' | sh
+elif [ "$1" != "site" ]; then
+    echo "bash convert.sh all|site"
+    exit 1
+fi
+
 
 # Simple pages, 1.html to n.html
 total=0
