@@ -4,9 +4,11 @@ if [ "$1" == "all" ]; then
   # Small and large images
   rm *.jpg
 
-  ls raw | sed 's/.*/convert "raw\/&" -resize 350x350 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_n.jpg"/' | sed 's/.jpg_n/_n/' | sh
+  ls raw | xargs -I {} ./resize.sh "{}"
+  
+  #ls raw | sed 's/.*/convert "raw\/&" -resize 350x350 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_n.jpg"/' | sed 's/.jpg_n/_n/' | sh
 
-  ls raw | sed 's/.*/convert "raw\/&" -resize 900x900 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_l.jpg"/' | sed 's/.jpg_l/_l/' | sh
+  #ls raw | sed 's/.*/convert "raw\/&" -resize 900x900 -border 1x1 -bordercolor white -border 3x3 -bordercolor black "&_l.jpg"/' | sed 's/.jpg_l/_l/' | sh
 elif [ "$1" != "site" ]; then
     echo "bash convert.sh all|site"
     exit 1
