@@ -21,7 +21,7 @@ done
 echo "$total images"
 
 n=0
-prev=$total
+prev=$(expr "$total" - 1)
 for file in *_l.jpg; do
     next=$(expr "$n" + 1)
 if [ "$next" == "$total" ]; then
@@ -43,7 +43,7 @@ fi
   <body>
     <center>
       <a href="$next.html"><img src="$file"/></a>
-      <br><a href="$prev.html">Previous</a> ~ <a href="index.html">Index</a> ~ <a href="next.html">Next</a>
+      <br><a href="$prev.html">Previous</a> ~ <a href="index.html">Index</a> ~ <a href="$next.html">Next</a>
     </center>
   </body>
 </html>
