@@ -42,8 +42,8 @@ fi
   </head>
   <body>
     <center>
-      <a href="$next.html"><img src="$file"/></a>
-      <br><a href="$prev.html">Previous</a> ~ <a href="index.html">Index</a> ~ <a href="$next.html">Next</a>
+      <a href="$prev.html">Previous</a> ~ <a href="index.html">Index</a> ~ <a href="$next.html">Next</a>
+      <br><a href="$next.html"><img src="$file"/></a>
     </center>
   </body>
 </html>
