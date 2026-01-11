@@ -74,6 +74,7 @@ cat <<EOF > index.html
      <td colspan=3 style="width:900px">
     <h1> A roll of HP5+ on Albany Bulb, Jan 2026 </h1>
     <p>
+      Nikon F3, 100mm Nikkor, HP5+ developed in DD-X. A single roll shot in the gloaming.
     </p>
     </td>
     </tr>
