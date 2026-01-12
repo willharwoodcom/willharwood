@@ -80,7 +80,7 @@ cat <<EOF >> index.html
         width: 900px;
       }
       .pictures {
-        position: relative;
+        display: inline;
       }
     </style>
   </head>
