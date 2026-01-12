@@ -85,7 +85,6 @@ cat <<EOF >> index.html
     </style>
   </head>
   <body>
-   <center>
    <div class="text">
     <h1> 
 EOF
@@ -116,7 +115,6 @@ done
 
 cat <<EOF >> index.html
      </div>
-   </center>
   </body>
 </html>
 EOF
