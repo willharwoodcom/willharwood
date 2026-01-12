@@ -73,19 +73,19 @@ cat <<EOF >> index.html
       body {
         background-color: lightgrey;
       }
-      img {
-        margin: 10px;
+      .imgbox {
+        margin: 20px;
+      }
+      .text {
+        width: 900px;
       }
     </style>
   </head>
   <body>
    <center>
-   <table>
-     <tr>
-     <td colspan=3 style="width:900px">
+   <div class="text">
     <h1> 
 EOF
-
 cat title.txt >> index.html
 
 cat <<EOF >> index.html
@@ -97,33 +97,21 @@ cat description.txt >> index.html
 
 cat <<EOF >> index.html
     </p>
-    </td>
-    </tr>
-    <tr>
+    </div>
+    <div>
 EOF
 
 i=0
 n=0
 for file in *_n.jpg; do
 cat <<EOF >> index.html
-          <td>
-            <a href="$n.html"><img src="$file"/></a>
-          </td>
+      <div class="imgbox"> <a href="$n.html"><img src="$file"/></a> </div>
 EOF
-  i=$(expr "$i" + 1)
-  if [ "$i" == "3" ]; then
-      i=0
-cat <<EOF >> index.html
-          </tr>
-          <tr>
-EOF
-  fi
 
   n=$(expr "$n" + 1)
 done
 
 cat <<EOF >> index.html
-       </tr>
      </table>
    </center>
   </body>
