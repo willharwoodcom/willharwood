@@ -112,7 +112,6 @@ EOF
 done
 
 cat <<EOF >> index.html
-     </table>
    </center>
   </body>
 </html>
