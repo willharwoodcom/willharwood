@@ -75,12 +75,12 @@ cat <<EOF >> index.html
       }
       .imgbox {
         margin: 20px;
+        display: inline;
       }
       .text {
         width: 900px;
       }
       .pictures {
-        display: inline;
       }
     </style>
   </head>
