@@ -79,6 +79,9 @@ cat <<EOF >> index.html
       .text {
         width: 900px;
       }
+      .pictures {
+        position: relative;
+      }
     </style>
   </head>
   <body>
@@ -98,7 +101,7 @@ cat description.txt >> index.html
 cat <<EOF >> index.html
     </p>
     </div>
-    <div>
+    <div class="pictures">
 EOF
 
 i=0
@@ -112,6 +115,7 @@ EOF
 done
 
 cat <<EOF >> index.html
+     </div>
    </center>
   </body>
 </html>
