@@ -123,6 +123,7 @@ EOF
 git add *_n.jpg
 git add *_l.jpg
 git add *.html
+git add *.txt
 git add ../scripts/convert.sh
 
 git commit -m "next"
