@@ -1,10 +1,11 @@
 #!/bin/bash
+#set -e
 
 if [ "$1" == "all" ]; then
   # Small and large images
   rm *_l.jpg *_n.jpg
 
-  ls raw | xargs -0 {} resize.sh "{}"
+  ls raw | xargs -I {} resize.sh "{}"
   
 elif [ "$1" != "site" ]; then
     echo "bash convert.sh all|site"
