@@ -41,14 +41,18 @@ EOF
         background-color: lightgrey;
       }
       img {
-        margin: 10px;
+        max-width: 100vw;   /* Limit width to viewport width */
+        max-height: 90vh;  /* Limit height to viewport height */
+        width: auto;        /* Maintain aspect ratio */
+        height: auto;       /* Maintain aspect ratio */
+        display: block;
       }
     </style>
   </head>
   <body>
     <center>
       <a href="$prev.html">Previous</a> ~ <a href="index.html">Index</a> ~ <a href="$next.html">Next</a>
-      <br><a href="$next.html"><img width="100%" height="100%" src="$file"/></a>
+      <br><a href="$next.html"><img src="$file"/></a>
     </center>
   </body>
 </html>
