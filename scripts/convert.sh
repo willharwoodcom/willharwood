@@ -42,7 +42,7 @@ EOF
       }
       img {
         max-width: 100vw;   /* Limit width to viewport width */
-        max-height: 90vh;  /* Limit height to viewport height */
+        max-height: 80vh;  /* Limit height to viewport height */
         width: auto;        /* Maintain aspect ratio */
         height: auto;       /* Maintain aspect ratio */
         display: block;
