@@ -48,7 +48,7 @@ EOF
   <body>
     <center>
       <a href="$prev.html">Previous</a> ~ <a href="index.html">Index</a> ~ <a href="$next.html">Next</a>
-      <br><a href="$next.html"><img src="$file"/></a>
+      <br><a href="$next.html"><img width="100%" height="100%" src="$file"/></a>
     </center>
   </body>
 </html>
